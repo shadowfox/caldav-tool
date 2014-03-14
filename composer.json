@@ -1,0 +1,7 @@
+{
+    "name": "shadowfox/caldavtool",
+    "description": "A quick but clean tool for testing caldav requests",
+    "require": {
+      
+    }
+}
