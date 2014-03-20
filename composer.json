@@ -2,6 +2,7 @@
     "name": "shadowfox/caldavtool",
     "description": "A quick-but-clean tool for testing caldav requests",
     "require": {
-        "klein/klein": "2.0.x"
+        "klein/klein": "2.0.x",
+        "twig/twig": "1.15.x"
     }
 }
