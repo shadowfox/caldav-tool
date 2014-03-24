@@ -45,6 +45,14 @@ $router->respond(function ($request, $response, $service, $app) use ($router) {
 
         return $twig;
     });
+
+    // A fixed redirect method
+    // Removing the full path from the request uri to make routing work
+    // will of course has the side effect of incorrect redirects.
+    // TODO: Maybe submit a patch for better handling of this in Klein.
+    $app->redirect = function($url, $code = 302) {
+        return $router->response()->redirect(BASE_URL . $url, $code);
+    };
 });
 
 // Load the controllers
@@ -56,3 +64,14 @@ foreach ($controllers as $controller) {
 foreach ($models as $model) {
     require_once APP_PATH . '/models/' . $model . '.php';
 }
+
+// Show an error template on any HTTP error
+$router->onHttpError(function ($code, $router) {
+    $uri = $router->request()->uri();
+    $response = $router->app()->twig->render('error.html', [
+        'title' => $code,
+        'message' => "An HTTP $code error occurred for URI $uri"
+    ]);
+
+    $router->response()->body($response);
+});
