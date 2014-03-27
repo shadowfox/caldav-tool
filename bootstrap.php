@@ -3,16 +3,19 @@ define('APP_ENV', !empty($_SERVER['APP_ENV']) ? $_SERVER['APP_ENV'] : 'productio
 define('APP_PATH', ROOT_PATH . '/app');
 
 require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/app/TwigExtensionGlobals.php';
 
 // Components to load
 $controllers = [];
-$models = [];
-
+$models = ['account', 'calendar'];
 
 ORM::configure('sqlite:'.ROOT_PATH.'/caldav_tool.db');
 
 $router = new \Klein\Klein();
 $request = getKleinRequest();
+
+// Start PHP's session
+$router->service()->startSession();
 
 /**
  * A fix for Klein's handling (or lack thereof) of non-webroot deployments
@@ -37,6 +40,12 @@ $router->respond(function ($request, $response, $service, $app) use ($router) {
             'strict_variables' => true
         ]);
 
+        $twig->addExtension(new Twig_Extension_Globals([
+            'session' => $_SESSION,
+            'base_url' => BASE_URL,
+        ]));
+
+        // Enable some helpful things for development
         if (APP_ENV === 'development') {
             $twig->enableDebug();
             $twig->enableAutoReload();
