@@ -9,9 +9,9 @@ $controllers = [];
 $models = [];
 
 
-use \Klein\Klein;
+ORM::configure('sqlite:'.ROOT_PATH.'/caldav_tool.db');
 
-$router = new Klein();
+$router = new \Klein\Klein();
 $request = getKleinRequest();
 
 /**
