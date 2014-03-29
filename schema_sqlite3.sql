@@ -1,7 +1,6 @@
 CREATE TABLE account (
 	id TEXT PRIMARY KEY,
-	server INT,
-	uri TEXT,
+	server_uri TEXT,
 	username TEXT,
 	password TEXT
 );
