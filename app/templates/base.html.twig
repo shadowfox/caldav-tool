@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block head %}
+      <title>CalDAV Tool</title>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      {% for file in ['style.css'] %}
+      <link rel="stylesheet" type="text/css" href="{{ base_url }}/css/{{ file }}">
+      {% endfor %}
+    {% endblock %}
+  </head>
+  <body>
+    {% include "_navigation.html" %}
+    <div class="container">
+    {% block content %}{% endblock %}
+    </div>
+
+    {% for file in ['app.js'] %}
+    <script type="text/javascript" src="{{ base_url }}/js/{{ file }}"></script>
+    {% endfor %}
+  </body>
+</html>
