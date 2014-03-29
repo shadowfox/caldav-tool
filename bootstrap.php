@@ -77,7 +77,7 @@ foreach ($models as $model) {
 // Show an error template on any HTTP error
 $router->onHttpError(function ($code, $router) {
     $uri = $router->request()->uri();
-    $response = $router->app()->twig->render('error.html', [
+    $response = $router->app()->twig->render('error.html.twig', [
         'title' => $code,
         'message' => "An HTTP $code error occurred for URI $uri"
     ]);
