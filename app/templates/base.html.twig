@@ -1,3 +1,4 @@
+{% from "_helpers.twig" import flash_messages %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,6 +16,7 @@
   <body>
     {% include "_navigation.html" %}
     <div class="container">
+    {{ flash_messages() }}
     {% block content %}{% endblock %}
     </div>
 

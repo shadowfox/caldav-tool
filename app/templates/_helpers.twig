@@ -1,0 +1,8 @@
+{# Display flash message from the globally available service object #}
+{% macro flash_messages() %}
+  {% for level, messages in service.flashes() %}
+    {% for message in messages %}
+      <div class="alert alert-{{ level }}">{{ message }}</div>
+    {% endfor %}
+  {% endfor %}
+{% endmacro %}
