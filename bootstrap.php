@@ -33,7 +33,7 @@ function getKleinRequest() {
 
 $router->respond(function ($request, $response, $service, $app) use ($router) {
     // Hook up twig
-    $app->register('twig', function() {
+    $app->register('twig', function() use ($router) {
         $loader = new Twig_Loader_Filesystem(APP_PATH . '/templates/');
         $twig = new Twig_Environment($loader, [
             'cache' => ROOT_PATH . '/cache/',
@@ -43,6 +43,7 @@ $router->respond(function ($request, $response, $service, $app) use ($router) {
         $twig->addExtension(new Twig_Extension_Globals([
             'session' => $_SESSION,
             'base_url' => BASE_URL,
+            'service' => $router->service()
         ]));
 
         // Enable some helpful things for development
