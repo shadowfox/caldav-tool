@@ -1,0 +1,8 @@
+/* --------------------------------- */
+/* Bootstrap overrides and additions */
+/* --------------------------------- */
+
+/* Make alerts (flash messages) a bit smaller */
+.alert {
+	padding: 5px;
+}
