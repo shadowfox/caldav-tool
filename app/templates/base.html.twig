@@ -8,7 +8,7 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      {% for file in ['style.css'] %}
+      {% for file in ['style.min.css'] %}
       <link rel="stylesheet" type="text/css" href="{{ base_url }}/css/{{ file }}">
       {% endfor %}
     {% endblock %}
@@ -20,7 +20,7 @@
     {% block content %}{% endblock %}
     </div>
 
-    {% for file in ['app.js'] %}
+    {% for file in ['app.min.js'] %}
     <script type="text/javascript" src="{{ base_url }}/js/{{ file }}"></script>
     {% endfor %}
   </body>
