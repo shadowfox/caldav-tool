@@ -8,7 +8,7 @@ namespace AppUtils;
  * @param  array $search    The array to search
  * @return bool             rue if ALL keys exist, false otherwise
  */
-public static function arrayKeysExist($keys, $search) {
+function arrayKeysExist($keys, $search) {
     foreach($keys as $key) {
         if (!array_key_exists($key, $array)) {
             return false;
@@ -25,7 +25,7 @@ public static function arrayKeysExist($keys, $search) {
  * @param string $string The input string
  * @return string        The slugified string
  */
-function function slugify($string) {
+function slugify($string) {
     $string = strtolower(trim($string));
     $string = preg_replace('~[^\\pL\d]+~u', '_', $string);
 
