@@ -4,6 +4,7 @@ define('APP_PATH', ROOT_PATH . '/app');
 
 require_once __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/app/TwigExtensionGlobals.php';
+require_once __DIR__ . '/app/utils.php';
 
 // Components to load
 $controllers = [];
