@@ -3,3 +3,4 @@ vendor/
 cache/
 bower_components/
 node_modules
+*.db
